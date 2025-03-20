@@ -1,2 +1,2 @@
 # QzicDSP
-My collection of DSP classes
+My collection of Java DSP classes
