@@ -1,0 +1,57 @@
+%NOISE GENERATION
+M=25; N=1000; Delay=3; lambda=1 ;
+noise=randn(N, 1);
+fnoise=filter([zeros(1 ,Delay) 1],1 ,noise);
+[Num,Oen]=bulter(10,O.5);
+fnoise =filter( Num, De n, foise );
+fnoise =fnoiseistd (fnoise )*0.5;
+weights=zeros(M,length(fnoise )+1);
+d=signal+fnoise;
+%INITIALlZATION
+epsilon=O.00001 ;
+w=zeros(M,N);
+uvec=zeros(1,M);
+e=zeros(N,1 );
+wf(1 :M, 1 )=0;
+wb(1:M,1)=O;
+w(1 :M, 1 )=0;
+phi(1:M,1)=O;
+gamma(1)=1 ;
+epb(1 :M, 1 )=epsilon;
+epf(1 :M, 1 )=epsilon;
+%FILTERING ALGORITHM
+for i=2:length(fnoise)
+%Forward A Priori Prediction Error
+efa(i)=no i se(i)-uvec~wf(: ,i-1);
+%Forward A Posterior Prediction Error
+ef( i)=efa(i)*gamma(i-1 );
+%MWLS Forward Error
+epf(i)=lambda"epf(i-1 )+efa(i)*(ef(i))':
+%Forward Weight Update
+wf(: ,i)=wf( :,i-1 )+phi(: ,i-1 )*ef( i):
+phi 1 (: ,i)=[O;ph i(: ,i-1 »)+efa(i)'/(lambda*epf (i-1 »*[1 ;-wf(: ,i-1 »);
+%M+1 Conversion Factor
+gamma 1 (i)=gamma(i-1 tlambda*epf(i-1 )/epf(i);
+%Backward A Priori Prediction Error
+eba(i)=lambda*epb(i-1 )*phi 1 (M+1 ,i );
+%M Conversion Factor
+gammainv= 1/gamma 1 (i)-phi 1 (M+ 1 ,i)*eba(i);
+gamma(i)=1/gammainv;
+%Backward A Posterior Prediction Error
+eb(i)=eba(i)*gamma(i);
+%MWLS Backward Error
+epb(i)=lambda*epb(i-1 )+eb(i)*eba(i)';
+%M Conversion Weight
+newvec=phi1 (:,i)-phi1 (M+1 ,i)*[-wb(:,i-1 );1];
+phi(:,i)=newvec(1 :M);
+%Backward Weight Update
+wb( :, i)=wb( :,i-1 )+phi(: ,Web(i);
+%Update with New Sample of Input Data
+uvec=[noise(i) uvec(1 :M-1 )]:
+%A Priori Joint-Estimation Error
+ea(i)=d(i)-uvec*w( :,i-1);
+%A Posterior Joint-Estimation Error
+e(i)=ea(i)*gamma(i);
+%Joint-Estimation Weight Update
+w( :,i)=w{ :,i-1 )+e(i)*phi( :,i);
+end

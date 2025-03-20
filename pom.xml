@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ca.qzic</groupId>
+    <artifactId>QzicDSP</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.release>11</maven.compiler.release>
+        <exec.mainClass>ca.qzic.qzicdsp.QzicDSP</exec.mainClass>
+    </properties>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.ejml/ejml-core -->
+        <dependency>
+            <groupId>org.ejml</groupId>
+            <artifactId>ejml-core</artifactId>
+            <version>0.43.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.ejml/equation -->
+        <dependency>
+            <groupId>org.ejml</groupId>
+            <artifactId>equation</artifactId>
+            <version>0.30</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.win32.win32.x86_64 -->
+        <dependency>
+            <groupId>org.eclipse.swt</groupId>
+            <artifactId>org.eclipse.swt.win32.win32.x86_64</artifactId>
+            <version>4.9</version>
+        </dependency>
+    </dependencies>
+</project>
